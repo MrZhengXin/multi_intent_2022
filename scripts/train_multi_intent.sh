@@ -10,7 +10,7 @@ for TASK in MultiIntent_single_stage
 do
     model_name='facebook/mbart-large-cc25'
 
-    cd /mnt/bd/zhengxinvolume/transformers/examples/pytorch/summarization
+    cd ../transformers/examples/pytorch/summarization
     python3 -m torch.distributed.launch --nproc_per_node=4 --master_port=12345  run_summarization.py \
         --model_name_or_path ${model_name} \
         --do_train \
@@ -35,11 +35,11 @@ do
         --sharded_ddp simple \
         --lang 'zh_CN'
     rm -rf ${MODEL}/${TASK}_${model_name}/checkpoint*
-    cd /mnt/bd/zhengxinvolume/AGIF
+    cd ${DIR}
     python3 tools/eval_multi_intent_exact_match.py  --pred_file ${MODEL}/${TASK}_${model_name}/generated_predictions.txt >> ${RES}/multi_intent_exact_match.txt &
     python3 tools/eval_sacc.py --ref_file ${DATA}/${TASK}/test.ref  --pred_file ${MODEL}/${TASK}_${model_name}/generated_predictions.txt >> ${RES}/sacc.txt
 
-    cd /mnt/bd/zhengxinvolume/e2e-metrics
+    cd ../e2e-metrics
     ./measure_scores.py -t ${DATA}/${TASK}/test.ref ${MODEL}/${TASK}_${model_name}/generated_predictions.txt >> ${RES}/BLEU.txt &
 
 done
@@ -49,7 +49,7 @@ for TASK in MultiIntent_single_stage
 do
 for model_name in google/mt5-base google/mt5-large google/mt5-xl 
 do
-    cd /mnt/bd/zhengxinvolume/transformers/examples/pytorch/summarization
+    cd ../transformers/examples/pytorch/summarization
     python3 -m torch.distributed.launch --nproc_per_node=4 --master_port=12345  run_summarization.py \
         --model_name_or_path ${model_name} \
         --do_train \
@@ -73,11 +73,11 @@ do
         --logging_steps 500 \
         --sharded_ddp simple 
     rm -rf ${MODEL}/${TASK}_${model_name}/checkpoint*
-    cd /mnt/bd/zhengxinvolume/AGIF
+    cd ${DIR}
     python3 tools/eval_multi_intent_exact_match.py  --pred_file ${MODEL}/${TASK}_${model_name}/generated_predictions.txt >> ${RES}/multi_intent_exact_match.txt &
     python3 tools/eval_sacc.py --ref_file ${DATA}/${TASK}/test.ref  --pred_file ${MODEL}/${TASK}_${model_name}/generated_predictions.txt >> ${RES}/sacc.txt
 
-    cd /mnt/bd/zhengxinvolume/e2e-metrics
+    cd ../e2e-metrics
     ./measure_scores.py -t ${DATA}/${TASK}/test.ref ${MODEL}/${TASK}_${model_name}/generated_predictions.txt >> ${RES}/BLEU.txt &
 
 done
