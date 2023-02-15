@@ -25,27 +25,24 @@ sh scripts/train_two_stage.sh
 
 # Citation
 ```
-@article{DBLP:journals/corr/abs-2210-11279,
-  author    = {Haoran Meng and
-               Zheng Xin and
-               Tianyu Liu and
-               Zizhen Wang and
-               He Feng and
-               Binghuai Lin and
-               Xuemin Zhao and
-               Yunbo Cao and
-               Zhifang Sui},
-  title     = {DialogUSR: Complex Dialogue Utterance Splitting and Reformulation
-               for Multiple Intent Detection},
-  journal   = {CoRR},
-  volume    = {abs/2210.11279},
-  year      = {2022},
-  url       = {https://doi.org/10.48550/arXiv.2210.11279},
-  doi       = {10.48550/arXiv.2210.11279},
-  eprinttype = {arXiv},
-  eprint    = {2210.11279},
-  timestamp = {Tue, 25 Oct 2022 14:25:08 +0200},
-  biburl    = {https://dblp.org/rec/journals/corr/abs-2210-11279.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@inproceedings{meng-etal-2022-dialogusr,
+    title = "{D}ialog{USR}: Complex Dialogue Utterance Splitting and Reformulation for Multiple Intent Detection",
+    author = "Meng, Haoran  and
+      Xin, Zheng  and
+      Liu, Tianyu  and
+      Wang, Zizhen  and
+      Feng, He  and
+      Lin, Binghuai  and
+      Zhao, Xuemin  and
+      Cao, Yunbo  and
+      Sui, Zhifang",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2022",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.findings-emnlp.234",
+    pages = "3214--3229",
+    abstract = "While interacting with chatbots, users may elicit multiple intents in a single dialogue utterance. Instead of training a dedicated multi-intent detection model, we propose DialogUSR, a dialogue utterance splitting and reformulation task that first splits multi-intent user query into several single-intent sub-queries and then recovers all the coreferred and omitted information in the sub-queries. DialogUSR can serve as a plug-in and domain-agnostic module that empowers the multi-intent detection for the deployed chatbots with minimal efforts. We collect a high-quality naturally occurring dataset that covers 23 domains with a multi-step crowd-souring procedure. To benchmark the proposed dataset, we propose multiple action-based generative models that involve end-to-end and two-stage training, and conduct in-depth analyses on the pros and cons of the proposed baselines.",
 }
 ```
